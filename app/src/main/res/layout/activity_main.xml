@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/Layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
 
-
-
-    <LinearLayout android:layout_width="match_parent"
+    <include layout="@layout/toolbar"/>
+    <include layout="@layout/fragment_overview"/>
+    <CalendarView
+        android:id="@+id/calenderView"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-        <!-- include 태그 툴바를 모든 화면에서 보여줘야 하기에 사용-->
-        <include
-            android:id="@+id/nav_main_toolbar"
-            layout="@layout/app_bar"
-            />
-<!--   메인 화면은 아마 네비게이션을 이용할듯  -->
-    </LinearLayout>
+        android:visibility="invisible"/>
 
 
-</layout>
+</LinearLayout>
+
+

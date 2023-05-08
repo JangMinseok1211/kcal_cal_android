@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId ()) {
             case R.id.calendar:
-               cldv.setVisibility(android.view.View.VISIBLE);
+                cldv.setVisibility(android.view.View.VISIBLE);
                 return true;
             default:
                 return super.onOptionsItemSelected (item);
