@@ -6,7 +6,7 @@
     android:id="@+id/toolbar"
     app:title="@string/app_name"
     app:titleTextColor="@color/white"
-    android:background="@color/purple_200"
+    android:background="@color/grey"
     app:menu="@menu/menu1">
 
 

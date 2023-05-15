@@ -9,7 +9,7 @@
     tools:context=".MainActivity">
 
     <include layout="@layout/toolbar"/>
-
+    <include layout="@layout/fragment_overview"/>
     <CalendarView
         android:id="@+id/calenderView"
         android:layout_width="match_parent"
