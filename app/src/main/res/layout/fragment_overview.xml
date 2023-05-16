@@ -247,7 +247,7 @@
                     android:text="kcal"
                     android:textColor="@color/black"
                     android:textSize="18sp"
-                    app:layout_constraintBaseline_toBaselineOf="@id/total_kcal"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/total_kcal"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/total_kcal" />
 
