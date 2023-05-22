@@ -8,13 +8,33 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <include layout="@layout/toolbar"/>
-    <include layout="@layout/fragment_search"/>
-    <CalendarView
-        android:id="@+id/calenderView"
+
+    <include
+        layout="@layout/fragment_overview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="invisible"/>
+        android:layout_height="604dp"
+        />
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+
+        android:id="@+id/containers">
+
+    </FrameLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigationview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:labelVisibilityMode="labeled"
+        app:itemBackground="@color/white"
+        app:menu="@menu/underbar"
+        />
+
+
 
 
 </LinearLayout>
