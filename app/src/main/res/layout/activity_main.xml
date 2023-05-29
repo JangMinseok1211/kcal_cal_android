@@ -8,10 +8,10 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+
     <include
         android:id="@+id/nav_main_toolbar"
-        layout="@layout/app_bar"
-        />
+        layout="@layout/app_bar" />
 
 
     <androidx.fragment.app.FragmentContainerView
@@ -20,8 +20,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:defaultNavHost="true"
+        android:layout_weight="1"
         app:navGraph="@navigation/main_nav" />
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigationview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:itemBackground="@color/white"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/underbar" />
 
 </LinearLayout>
 
