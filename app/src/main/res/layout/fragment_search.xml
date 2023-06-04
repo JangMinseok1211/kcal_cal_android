@@ -19,8 +19,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
             <!--two way binding-->
-            <EditText
-                android:id="@+id/search_edittext"
+            <!--<EditText
+                android:id="@+id/search_food"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
@@ -33,7 +33,7 @@
                 android:padding="12dp"
                 app:layout_constraintEnd_toStartOf="@+id/search_button"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent" />-->
 
             <Button
                 android:id="@+id/search_button"
@@ -45,6 +45,23 @@
                 app:cornerRadius="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <AutoCompleteTextView
+                android:id="@+id/search_food"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/search_input_style"
+                android:drawableLeft="@drawable/ic_search_black_24dp"
+                android:drawablePadding="8dp"
+                android:ems="10"
+                android:completionThreshold="1"
+                android:hint="search"
+                android:inputType="textPersonName"
+                android:padding="12dp"
+                app:layout_constraintEnd_toStartOf="@+id/search_button"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
             <!--                android:text="@={viewModel.word}"-->
             <!--            app:layout_constraintEnd_toStartOf="@+id/btn_search"-->
@@ -78,7 +95,6 @@
             app:layout_constraintTop_toBottomOf="@+id/cly_search_bar"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
