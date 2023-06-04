@@ -22,22 +22,23 @@
 
         <TextView
             android:id="@+id/tv_item_overview_name"
+            style="@style/tv_overview_foodname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Banana"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            style="@style/tv_overview_foodname"/>
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="바나나" />
 
         <TextView
             android:id="@+id/tv_item_overview_grams"
+            style="@style/tv_overview_foodlabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="100 g"
             android:layout_marginStart="@dimen/default_margin_half"
+            android:text="100g"
             app:layout_constraintBaseline_toBaselineOf="@id/tv_item_overview_name"
             app:layout_constraintStart_toEndOf="@id/tv_item_overview_name"
-            style="@style/tv_overview_foodlabel"/>
+            tools:text="100 g" />
 
         <TextView
             android:id="@+id/tv_item_overview_kcal"

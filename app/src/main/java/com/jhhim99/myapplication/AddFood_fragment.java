@@ -5,6 +5,8 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,26 +18,25 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-
+import java.util.ArrayList;
+import java.util.List;
 
 public class AddFood_fragment extends Fragment {
     private Data data;
 
     private String foodname;
     private View view;
-    private Button addfoodbtn,backbtn;
-    private TextView foodname_tv, carb_g_tv ,prot_g_tv,prov_g_tv,kal_tv;
+    private Button addfoodbtn, backbtn;
+    private TextView foodname_tv, carb_g_tv, prot_g_tv, prov_g_tv, kal_tv;
     private int ttal;
     private double tpro;
     private double tcar;
     private double tfat;
 
+    private RecyclerView recyclerView;
+    private FoodOverviewAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -46,50 +47,52 @@ public class AddFood_fragment extends Fragment {
         backbtn = (Button) view.findViewById(R.id.back_btn);
         addfoodbtn = (Button) view.findViewById(R.id.add_food_button);
         foodname_tv =  (TextView) view.findViewById(R.id.total_kcal);
-
         carb_g_tv  = (TextView) view.findViewById(R.id.carb_g);
         prot_g_tv  = (TextView) view.findViewById(R.id.prot_g);
         prov_g_tv  = (TextView) view.findViewById(R.id.prov_g);
         kal_tv = (TextView) view.findViewById(R.id.kcal);
 
-
-        if (getArguments() != null)
-        {
-            foodname = getArguments().getString("foodname"); // overview_fragment 에서 받아온 값 넣기
+        if (getArguments() != null) {
+            foodname = getArguments().getString("foodname");
             searchFoodData(foodname);
-
             updateTextViews();
-
         }
-
-
 
         addfoodbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                AddFood_fragment addFood_fragment = new AddFood_fragment();
-                Overview_fragment overview_fragment = new  Overview_fragment();
-                Search_fragment search_fragment = new Search_fragment();
-                transaction.replace(R.id.fragment_main,overview_fragment);
-                transaction.commit();
+                updateDataInstance();
 
+                // MainActivity에서 Overview_fragment의 RecyclerView 가져오기
+                MainActivity mainActivity = (MainActivity) getActivity();
+                if (mainActivity != null) {
+                    RecyclerView recyclerView = mainActivity.getOverviewRecyclerView();
 
+                    // 음식 정보를 FoodItem으로 생성
+                    FoodItem foodItem = new FoodItem(foodname, ttal, tcar, tpro, tfat);
+
+                    // RecyclerView에 음식 정보 추가
+                    FoodOverviewAdapter adapter = (FoodOverviewAdapter) recyclerView.getAdapter();
+                    if (adapter != null) {
+                        adapter.addFoodItem(foodItem);
+                    }
+
+                    // Overview_fragment로 전환
+                    mainActivity.switchToOverviewFragment();
+                }
             }
         });
+
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                AddFood_fragment addFood_fragment = new AddFood_fragment();
-                Overview_fragment overview_fragment = new  Overview_fragment();
                 Search_fragment search_fragment = new Search_fragment();
-                transaction.replace(R.id.fragment_main,search_fragment);
+                transaction.replace(R.id.fragment_main, search_fragment);
                 transaction.commit();
-
-
             }
         });
+
         return view;
     }
 
@@ -131,6 +134,7 @@ public class AddFood_fragment extends Fragment {
         }
         return json;
     }
+
     private void updateTextViews() {
         foodname_tv.setText(foodname);
         carb_g_tv.setText(String.format("%.2f", tcar));
@@ -139,4 +143,11 @@ public class AddFood_fragment extends Fragment {
         kal_tv.setText(String.valueOf(ttal));
     }
 
+    private void updateDataInstance() {
+        data = Data.getInstance();
+        data.setTotal_Kal(data.getTotal_Kal() + ttal);
+        data.setTotal_carb(data.getTotal_carb() + tcar);
+        data.setTotal_prot(data.getTotal_prot() + tpro);
+        data.setTotal_fat(data.getTotal_fat() + tfat);
+    }
 }
