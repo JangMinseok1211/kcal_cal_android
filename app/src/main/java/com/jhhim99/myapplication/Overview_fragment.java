@@ -27,7 +27,7 @@ public class Overview_fragment extends Fragment {
 
     private RecyclerView foodOverviewRecyclerView;
     private FoodOverviewAdapter foodOverviewAdapter;
-    private List<FoodItem> foodItemList;
+    private List<FoodItem> foodItemList = new ArrayList<>();
 
     @Nullable
     @Override

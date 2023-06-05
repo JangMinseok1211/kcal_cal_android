@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,6 +23,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+
+
+
 
 public class AddFood_fragment extends Fragment {
     private Data data;
@@ -35,7 +39,7 @@ public class AddFood_fragment extends Fragment {
     private double tcar;
     private double tfat;
 
-    private RecyclerView recyclerView;
+
     private FoodOverviewAdapter adapter;
 
     @Override
@@ -63,27 +67,36 @@ public class AddFood_fragment extends Fragment {
             public void onClick(View view) {
                 updateDataInstance();
 
-                // MainActivity에서 Overview_fragment의 RecyclerView 가져오기
                 MainActivity mainActivity = (MainActivity) getActivity();
                 if (mainActivity != null) {
                     RecyclerView recyclerView = mainActivity.getOverviewRecyclerView();
 
-                    // 음식 정보를 FoodItem으로 생성
                     FoodItem foodItem = new FoodItem(foodname, ttal, tcar, tpro, tfat);
 
-                    // RecyclerView에 음식 정보 추가
                     FoodOverviewAdapter adapter = (FoodOverviewAdapter) recyclerView.getAdapter();
                     if (adapter != null) {
+                        Toast.makeText(getContext(), foodItem.getFoodName() + " 이(가) 추가 되었습니다.", Toast.LENGTH_SHORT).show();
                         adapter.addFoodItem(foodItem);
+                    } else {
+                        Toast.makeText(getContext(), "어댑터 오류", Toast.LENGTH_SHORT).show();
                     }
 
-                    // Overview_fragment로 전환
                     mainActivity.switchToOverviewFragment();
+                } else {
+                    Toast.makeText(getContext(), "메인 오류", Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
-        backbtn.setOnClickListener(new View.OnClickListener() {
+
+
+
+
+
+
+
+
+                backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();

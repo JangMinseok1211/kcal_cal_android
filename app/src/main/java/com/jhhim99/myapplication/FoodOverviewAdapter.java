@@ -1,5 +1,6 @@
 package com.jhhim99.myapplication;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.view.LayoutInflater;
@@ -22,7 +24,7 @@ import java.util.List;
 
 public class FoodOverviewAdapter extends RecyclerView.Adapter<FoodOverviewAdapter.ViewHolder> {
 
-    private List<FoodItem> foodItemList;
+    private List<FoodItem> foodItemList = new ArrayList<>();
     private LayoutInflater inflater;
 
     public FoodOverviewAdapter(List<FoodItem> foodItemList) {
@@ -80,7 +82,8 @@ public class FoodOverviewAdapter extends RecyclerView.Adapter<FoodOverviewAdapte
 
     public void addFoodItem(FoodItem foodItem) {
         foodItemList.add(foodItem);
-        notifyItemInserted(foodItemList.size() - 1);
+        notifyItemInserted(foodItemList.size());
+        notifyDataSetChanged();
     }
 
 }

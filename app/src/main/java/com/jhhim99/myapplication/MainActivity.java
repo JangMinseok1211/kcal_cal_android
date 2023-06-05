@@ -35,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        RecyclerView overviewRecyclerView = getOverviewRecyclerView();
+        // overviewRecyclerView를 사용할 수 있음
+        
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         overviewFragment = new Overview_fragment(); // 수정된 부분
         transaction.replace(R.id.fragment_main, overviewFragment);
@@ -42,8 +45,6 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportFragmentManager().executePendingTransactions();
 
-        RecyclerView overviewRecyclerView = getOverviewRecyclerView();
-        // overviewRecyclerView를 사용할 수 있음
     }
 
     public RecyclerView getOverviewRecyclerView() {
