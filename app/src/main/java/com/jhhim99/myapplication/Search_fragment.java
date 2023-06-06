@@ -15,7 +15,7 @@ import android.widget.ImageButton;
 
 public class Search_fragment extends Fragment {
 
-
+    private Button back_btn_2;
     private Button search_button;
     private EditText search_food;
     private View view;
@@ -25,8 +25,18 @@ public class Search_fragment extends Fragment {
         // Inflate the layout for this fragment
 
         view = inflater.inflate(R.layout.fragment_search, container, false);
+        back_btn_2 = (Button) view.findViewById(R.id.back_btn_2);
         search_button = (Button) view.findViewById(R.id.search_button);
         search_food = (EditText)view.findViewById(R.id.search_food);
+        back_btn_2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                Overview_fragment overview_fragment = new Overview_fragment();
+                transaction.replace(R.id.fragment_main, overview_fragment);
+                transaction.commit();
+            }
+        });
         search_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

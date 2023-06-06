@@ -6,9 +6,20 @@
     android:layout_height="match_parent">
 
 
+    <Button
+        android:id="@+id/back_btn_2"
+        android:layout_width="386dp"
+        android:layout_height="52dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/roundbutton"
+        android:text="back"
+        android:textColor="#fff"
+        app:cornerRadius="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cly_search_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -35,7 +46,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />-->
 
-            <Button
+        <Button
                 android:id="@+id/search_button"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -47,7 +58,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <AutoCompleteTextView
+        <AutoCompleteTextView
                 android:id="@+id/search_food"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -71,17 +82,17 @@
 
 
     <TextView
-            android:id="@+id/tv_not_found"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/default_margin_double"
-            android:text="음식을 추가해 주세요."
-            android:textSize="@dimen/text_title"
-            android:textColor="@color/colorPrimaryDark"
-            android:gravity="center"
-            app:layout_constraintTop_toBottomOf="@+id/cly_search_bar"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+        android:id="@+id/tv_not_found"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin_double"
+        android:gravity="center"
+        android:text="음식을 추가해 주세요."
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="@dimen/text_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cly_search_bar" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
