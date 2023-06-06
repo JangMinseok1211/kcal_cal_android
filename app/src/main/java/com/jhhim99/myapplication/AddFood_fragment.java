@@ -1,5 +1,7 @@
 package com.jhhim99.myapplication;
 
+import static java.lang.Math.log;
+
 import android.content.Context;
 import android.os.Bundle;
 
@@ -58,8 +60,16 @@ public class AddFood_fragment extends Fragment {
 
         if (getArguments() != null) {
             foodname = getArguments().getString("foodname");
-            searchFoodData(foodname);
-            updateTextViews();
+            boolean foodFound = searchFoodData(foodname);
+            if (foodFound) {
+                updateTextViews();
+            } else {
+                Toast.makeText(getContext(), "검색된 음식이 없습니다.", Toast.LENGTH_SHORT).show();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                Search_fragment search_fragment = new Search_fragment();
+                transaction.replace(R.id.fragment_main, search_fragment);
+                transaction.commit();
+            }
         }
 
         addfoodbtn.setOnClickListener(new View.OnClickListener() {
@@ -106,9 +116,10 @@ public class AddFood_fragment extends Fragment {
         return view;
     }
 
-    private void searchFoodData(String foodName) {
+    private boolean searchFoodData(String foodName) {
         // JSON 파일에서 검색하여 정보 추출
         String json = loadJsonFromAsset(requireContext(), "food.json");
+        boolean foodFound = false;
 
         try {
             JSONArray jsonArray = new JSONArray(json);
@@ -122,12 +133,15 @@ public class AddFood_fragment extends Fragment {
                     tcar = foodData.getDouble("탄수화물");
                     tpro = foodData.getDouble("단백질");
                     tfat = foodData.getDouble("지방");
+                    foodFound = true;
                     break;
                 }
             }
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+        return foodFound;
     }
 
     private String loadJsonFromAsset(Context context, String fileName) {
@@ -156,8 +170,8 @@ public class AddFood_fragment extends Fragment {
     private void updateDataInstance() {
         data = Data.getInstance();
         data.setTotal_Kal(data.getTotal_Kal() + ttal);
-        data.setTotal_carb(data.getTotal_carb() + tcar);
-        data.setTotal_prot(data.getTotal_prot() + tpro);
-        data.setTotal_fat(data.getTotal_fat() + tfat);
+        data.setTotal_carb(Math.floor( (data.getTotal_carb() + tcar)*10 )/10 );
+        data.setTotal_prot(Math.floor((data.getTotal_prot() + tpro)*10 )/10 );
+        data.setTotal_fat(Math.floor((data.getTotal_fat() + tfat)*10 )/10 );
     }
 }

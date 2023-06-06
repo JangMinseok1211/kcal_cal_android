@@ -89,6 +89,14 @@ public class FoodOverviewAdapter extends RecyclerView.Adapter<FoodOverviewAdapte
 
                     int position = getAdapterPosition();
                     adapter.removeFoodItem(position);
+
+                    MainActivity mainActivity = (MainActivity) v.getContext();
+                    if (mainActivity != null) {
+                        Overview_fragment overviewFragment = mainActivity.getOverviewFragment();
+                        if (overviewFragment != null) {
+                            overviewFragment.updateTextViews();
+                        }
+                    }
                 }
             });
         }
@@ -102,11 +110,21 @@ public class FoodOverviewAdapter extends RecyclerView.Adapter<FoodOverviewAdapte
         notifyDataSetChanged();
     }
     public void removeFoodItem(int position) {
-
-
+        FoodItem removedFoodItem = foodItemList.get(position);
         foodItemList.remove(position);
+        Overview_fragment ov = new Overview_fragment();
+
+        // 데이터 인스턴스에서 삭제된 음식의 값을 빼주도록 수정
+        Data data = Data.getInstance();
+        data.setTotal_Kal(data.getTotal_Kal() - removedFoodItem.getCalorie());
+        data.setTotal_carb(Math.floor( (data.getTotal_carb() - removedFoodItem.getCarb())*10)/10 );
+        data.setTotal_prot(Math.floor( (data.getTotal_prot() - removedFoodItem.getProtein())*10)/10);
+        data.setTotal_fat(Math.floor( (data.getTotal_fat() - removedFoodItem.getFat())*10)/10);
+
         notifyItemRemoved(position);
         notifyDataSetChanged();
+
+
     }
 
 

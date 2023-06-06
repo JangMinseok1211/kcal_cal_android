@@ -90,11 +90,12 @@ public class Overview_fragment extends Fragment {
             }
         });
 
+
         return view;
     }
 
     // 처음 텍스트뷰 초기화
-    private void updateTextViews() {
+    public void updateTextViews() {
         data = Data.getInstance();
 
         totalkcal.setText(String.valueOf(data.getTotal_Kal()));
@@ -105,6 +106,11 @@ public class Overview_fragment extends Fragment {
         double carbPercentage = (data.getTotal_carb() / data.getTotal_Kal()) * 100;
         double protPercentage = (data.getTotal_prot() / data.getTotal_Kal()) * 100;
         double fatPercentage = (data.getTotal_fat() / data.getTotal_Kal()) * 100;
+
+        // 소수점 두 자리까지 반올림
+        carbPercentage = (double) Math.round(carbPercentage * 100d) / 100d;
+        protPercentage = (double) Math.round(protPercentage * 100d) /100d;
+        fatPercentage = (double) Math.round(fatPercentage * 100d) / 100d;
 
         // 값이 없다면 0으로 표시
         totalcarb_p.setText(Double.isNaN(carbPercentage) ? "0%" : String.valueOf(carbPercentage) + "%");
