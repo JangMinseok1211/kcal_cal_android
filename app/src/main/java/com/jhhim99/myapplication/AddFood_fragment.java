@@ -65,22 +65,19 @@ public class AddFood_fragment extends Fragment {
         addfoodbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                updateDataInstance();
+
 
                 MainActivity mainActivity = (MainActivity) getActivity();
                 if (mainActivity != null) {
-                    RecyclerView recyclerView = mainActivity.getOverviewRecyclerView();
-
                     FoodItem foodItem = new FoodItem(foodname, ttal, tcar, tpro, tfat);
-
-                    FoodOverviewAdapter adapter = (FoodOverviewAdapter) recyclerView.getAdapter();
-                    if (adapter != null) {
-                        Toast.makeText(getContext(), foodItem.getFoodName() + " 이(가) 추가 되었습니다.", Toast.LENGTH_SHORT).show();
-                        adapter.addFoodItem(foodItem);
+                    Overview_fragment overview = mainActivity.getOverviewFragment();
+                    if (overview != null) {
+                        Toast.makeText(getContext(), foodItem.getFoodName() + " 이(가) 추가되었습니다.", Toast.LENGTH_SHORT).show();
+                        updateDataInstance();
+                        overview.addFoodItemToList(foodItem);
                     } else {
-                        Toast.makeText(getContext(), "어댑터 오류", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "오류: 오버뷰 프래그먼트가 없습니다.", Toast.LENGTH_SHORT).show();
                     }
-
                     mainActivity.switchToOverviewFragment();
                 } else {
                     Toast.makeText(getContext(), "메인 오류", Toast.LENGTH_SHORT).show();

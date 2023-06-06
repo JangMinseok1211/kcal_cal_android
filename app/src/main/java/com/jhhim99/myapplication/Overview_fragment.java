@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,30 +25,46 @@ public class Overview_fragment extends Fragment {
     private ImageButton plusbtn;
     private View view;
     private Data data;
-
+    private ArrayList<FoodItem> foodItemList;
     private RecyclerView foodOverviewRecyclerView;
     private FoodOverviewAdapter foodOverviewAdapter;
-    private List<FoodItem> foodItemList = new ArrayList<>();
+    //private List<FoodItem> foodItemList;
+
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        // Initialize the list if savedInstanceState is null (i.e. no data was previously saved)
+        if (savedInstanceState == null) {
+            foodItemList = new ArrayList<>();
+
+
+
+        }
+    }
+
+
+    private void initRecyclerView() {
+        foodOverviewRecyclerView = view.findViewById(R.id.recycler_view_food_overview);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        foodOverviewRecyclerView.setLayoutManager(layoutManager);
+        foodOverviewAdapter = new FoodOverviewAdapter(FoodDataManager.getInstance().getFoodItemList());
+        foodOverviewRecyclerView.setAdapter(foodOverviewAdapter);
+    }
+
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         view = inflater.inflate(R.layout.fragment_overview, container, false);
 
 
+        initRecyclerView();
 
-        // foodItemList 초기화
-        foodItemList = new ArrayList<>();
 
-        foodOverviewRecyclerView = view.findViewById(R.id.recycler_view_food_overview);
 
-        // LayoutManager 설정 (LinearLayoutManager 또는 다른 원하는 레이아웃 매니저를 사용할 수 있습니다)
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        foodOverviewRecyclerView.setLayoutManager(layoutManager);
-
-        // 어댑터 생성 및 설정
-        foodOverviewAdapter = new FoodOverviewAdapter(foodItemList); // foodItemList는 FoodItem 객체의 목록입니다.
-        foodOverviewRecyclerView.setAdapter(foodOverviewAdapter);
 
         plusbtn = view.findViewById(R.id.plus_button);
         totalkcal = view.findViewById(R.id.total_kcal);
@@ -94,7 +111,20 @@ public class Overview_fragment extends Fragment {
         totalprot_p.setText(Double.isNaN(protPercentage) ? "0%" : String.valueOf(protPercentage) + "%");
         totalprov_p.setText(Double.isNaN(fatPercentage) ? "0%" : String.valueOf(fatPercentage) + "%");
     }
+
     public RecyclerView getRecyclerView() {
         return foodOverviewRecyclerView;
+    }
+
+    public void addFoodItemToList(FoodItem foodItem) {
+        if (foodItemList != null) {
+            FoodDataManager.getInstance().addFoodItem(foodItem);
+            if (getView() != null) {
+                RecyclerView recyclerView = getView().findViewById(R.id.recycler_view_food_overview);
+                FoodOverviewAdapter adapter = (FoodOverviewAdapter) recyclerView.getAdapter();
+                adapter.addFoodItem(foodItem);
+                adapter.notifyDataSetChanged();
+            }
+        }
     }
 }

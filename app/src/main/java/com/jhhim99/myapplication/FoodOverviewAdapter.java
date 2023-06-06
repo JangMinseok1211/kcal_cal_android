@@ -4,6 +4,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -46,7 +47,7 @@ public class FoodOverviewAdapter extends RecyclerView.Adapter<FoodOverviewAdapte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         FoodItem foodItem = foodItemList.get(position);
-        holder.bind(foodItem);
+        holder.bind(foodItem,this);
     }
 
     @Override
@@ -61,9 +62,11 @@ public class FoodOverviewAdapter extends RecyclerView.Adapter<FoodOverviewAdapte
         TextView carbsTextView;
         TextView proteinsTextView;
         TextView fatsTextView;
-
+        ImageButton delete_btn;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+
+            delete_btn = itemView.findViewById(R.id.btn_delete_item_overview);
             nameTextView = itemView.findViewById(R.id.tv_item_overview_name);
             kcalTextView = itemView.findViewById(R.id.tv_item_overview_kcal);
             carbsTextView = itemView.findViewById(R.id.tv_item_overview_carbs);
@@ -71,19 +74,40 @@ public class FoodOverviewAdapter extends RecyclerView.Adapter<FoodOverviewAdapte
             fatsTextView = itemView.findViewById(R.id.tv_item_overview_fats);
         }
 
-        public void bind(FoodItem foodItem) {
+        public void bind(FoodItem foodItem,FoodOverviewAdapter adapter) {
+
             nameTextView.setText(foodItem.getFoodName());
             kcalTextView.setText(String.valueOf(foodItem.getCalorie()) + " kcal");
             carbsTextView.setText(String.valueOf(foodItem.getCarb()) + " g");
             proteinsTextView.setText(String.valueOf(foodItem.getProtein()) + " g");
             fatsTextView.setText(String.valueOf(foodItem.getFat()) + " g");
+
+            delete_btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+
+                public void onClick(View v) {
+
+                    int position = getAdapterPosition();
+                    adapter.removeFoodItem(position);
+                }
+            });
         }
     }
 
     public void addFoodItem(FoodItem foodItem) {
+        Log.e("",foodItem.getFoodName());
         foodItemList.add(foodItem);
-        notifyItemInserted(foodItemList.size());
+
+        notifyItemInserted(foodItemList.size()-1);
         notifyDataSetChanged();
     }
+    public void removeFoodItem(int position) {
+
+
+        foodItemList.remove(position);
+        notifyItemRemoved(position);
+        notifyDataSetChanged();
+    }
+
 
 }

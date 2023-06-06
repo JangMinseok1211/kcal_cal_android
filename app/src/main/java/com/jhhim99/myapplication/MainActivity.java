@@ -57,8 +57,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void switchToOverviewFragment() {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        overviewFragment = new Overview_fragment(); // 수정된 부분
+        if (overviewFragment == null) {
+            overviewFragment = new Overview_fragment();
+        }
         transaction.replace(R.id.fragment_main, overviewFragment);
         transaction.commit();
+    }
+    public Overview_fragment getOverviewFragment() {
+        return overviewFragment;
     }
 }
