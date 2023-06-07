@@ -170,8 +170,8 @@ public class AddFood_fragment extends Fragment {
     private void updateDataInstance() {
         data = Data.getInstance();
         data.setTotal_Kal(data.getTotal_Kal() + ttal);
-        data.setTotal_carb(Math.floor( (data.getTotal_carb() + tcar)*10 )/10 );
-        data.setTotal_prot(Math.floor((data.getTotal_prot() + tpro)*10 )/10 );
-        data.setTotal_fat(Math.floor((data.getTotal_fat() + tfat)*10 )/10 );
+        data.setTotal_carb(Math.floor( (data.getTotal_carb() + tcar)*10 )/10.0 );
+        data.setTotal_prot(Math.floor((data.getTotal_prot() + tpro)*10 )/10.0 );
+        data.setTotal_fat(Math.floor((data.getTotal_fat() + tfat)*10 )/10.0 );
     }
 }
