@@ -6,11 +6,21 @@
     android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
 
     <androidx.appcompat.widget.Toolbar
-            android:id="@+id/app_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/toolbar">
 
+        android:id="@+id/app_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/toolbar">
+
+        <TextView
+            android:fontFamily="@font/roboto_medium"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="18sp"
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="칼로리 계산기" />
     </androidx.appcompat.widget.Toolbar>
+
 
 </com.google.android.material.appbar.AppBarLayout>

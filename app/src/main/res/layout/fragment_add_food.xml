@@ -15,27 +15,41 @@
         android:text="ADD FOOD"
         android:textColor="#fff"
         app:cornerRadius="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline_bottum"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    <Button
+        android:id="@+id/back_btn"
+        android:layout_width="379dp"
+        android:layout_height="37dp"
+        android:background="@drawable/roundbutton"
+        android:text="BACK"
+        android:textColor="#fff"
+        app:cornerRadius="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_bottum"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@+id/add_food_button"
+        app:layout_constraintVertical_bias="0.053" />
 
     <TextView
-        android:id="@+id/g_kcal"
+        android:id="@+id/base_kcal"
         style="@style/addfood_desc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
         android:layout_marginTop="16dp"
+        android:text="100g 기준 kcal"
         android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="@+id/guideline_left"
 
-        app:layout_constraintTop_toBottomOf="@+id/foodname"
+        app:layout_constraintStart_toStartOf="@+id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@+id/total_kcal"
         tools:text="100g 기준 kcal" />
 
     <TextView
-        android:id="@+id/foodname"
+        android:id="@+id/total_kcal"
         style="@style/addfood_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -57,7 +71,7 @@
         android:weightSum="5"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/g_kcal">
+        app:layout_constraintTop_toBottomOf="@+id/base_kcal">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -86,34 +100,12 @@
                 app:layout_constraintTop_toBottomOf="@+id/carb_text"
                 tools:text="10g" />
 
-            <TextView
-                android:id="@+id/carb_p"
-                style="@style/addfood_tv_nutrient_precent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/carb_g"
-                tools:text="5%" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1">
-
-            <TextView
-                android:id="@+id/prot_p"
-                style="@style/addfood_tv_nutrient_precent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/prot_g"
-                tools:text="5%" />
 
             <TextView
                 android:id="@+id/prot_g"
@@ -142,17 +134,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1">
-
-            <TextView
-                android:id="@+id/prov_p"
-                style="@style/addfood_tv_nutrient_precent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/prov_g"
-                tools:text="5%" />
 
             <TextView
                 android:id="@+id/prov_g"
@@ -186,18 +167,16 @@
                 style="@style/addfood_label_total"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="합계"
+                android:text="열량"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView7"
+                android:id="@+id/kcal"
                 style="@style/addfood_tv_nutrient"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
                 android:text="800"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -212,8 +191,8 @@
                 android:fontFamily="@font/roboto_medium"
                 android:text="kcal"
                 android:textColor="@color/black"
-                app:layout_constraintBaseline_toBaselineOf="@+id/textView7"
-                app:layout_constraintStart_toEndOf="@+id/textView7" />
+                app:layout_constraintBaseline_toBaselineOf="@+id/kcal"
+                app:layout_constraintStart_toEndOf="@+id/kcal" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
