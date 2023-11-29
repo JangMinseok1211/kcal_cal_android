@@ -16,10 +16,10 @@
 &nbsp;
     
 ### 2. 일반적인 기술 사항(General Description)
-  **-2.1	제품의 관점 (Product Perspective)**  
+  **-2.1 제품의 관점 (Product Perspective)**  
     해당 어플은 기존에 사용하던 칼로리 계산 어플을 어려워하는 사용자들을 위해 보다 간편하게 사용하고자 고안되었다. 매일매일을 기록하
     며 저장하면 한눈에 보기 힘들기에 해당 애플리케이션의 필요성이 대두되었다.  
-  **-2.2	사용자 특성 (User Characteristics)**  
+  **-2.2 사용자 특성 (User Characteristics)**  
     어플의 사용자는 어플 내에서 자신의 그날의 식단을 검색하고 추가할 수 있어야 한다. 고객은 다음과 같은 기능을 수행할 수 있어야 한다.  
     
     날짜 선택 기능  
@@ -38,7 +38,7 @@
 &nbsp;
 
 ### 3. 요구사항(Requirements)
-**-3.1	기능적 요구사항(Functional Requirement One)**  
+**-3.1 기능적 요구사항(Functional Requirement One)**  
     음식 데이터 관리 : 어플리케이션은 음식 데이터를 JSON 형식으로 관리합니다.  
     음식의 이름, 칼로리, 3대 영양소(탄수화물, 단백질, 지방)등의 정보가 포함됩니다.  
     
@@ -53,7 +53,7 @@
 
     음식 기록 및 저장 : 사용자가 섭취한 음식을 기록하고 저장할 수 있습니다. 음식 기록은 사용자의 섭취 칼로리와영양소 섭취량을 추적하
     기위해 사용됩니다.  
-**-3.2	사용자 요구사항(Usability Requirement One)**  
+**-3.2 사용자 요구사항(Usability Requirement One)**  
     어플의 사용자는 어플 내에서 자신의 그날의 식단을 검색하고 추가할 수 있어야 한다. 고객은 다음과 같은 기능을 수행할 수 있어야 한다.  
     
     날짜 선택 기능  
@@ -62,23 +62,23 @@
     그날의 아침, 점심, 저녁의 메뉴를 입력  
 
 
-**-3.3	신뢰성 요구사항(Reliability Requirement One)**  
+**-3.3 신뢰성 요구사항(Reliability Requirement One)**  
     음식 데이터베이스는 정확하고 최신의 정보를 포함해야 합니다. 영양소 값을 정확성을 유지하기 위해 신뢰할 수 있는 데이터 소스를 사용
     하거나 영양소 데이터베이스를 참조해야 합니다.  
-**-3.4	성능 요구사항 (Performance Requirement One)**  
+**-3.4 성능 요구사항 (Performance Requirement One)**  
     어플리케이션은 음식 데이터를 효율적으로 관리하고, 음식 검색 및 칼로리 계산 등의 기능을 빠르게 수행해야 합니다. 데이터베이스 쿼리
     최적화, 캐싱, 비동기 처리 등을 고려하여 성능을 향상시킵니다.
 &nbsp;
 
 &nbsp;
-### 4.소프트웨어 인터페이스(software interface)  
+### 4. 소프트웨어 인터페이스(software interface)  
 ![인터페이스](https://github.com/JangMinseok1211/team5/assets/74437788/b4d637da-967a-4573-ad76-47c7accd36d7)  
 
 &nbsp;
 
 &nbsp;
 
-### 5.사용법
+### 5. 사용법
 ![메인](https://github.com/JangMinseok1211/team5/assets/74437788/1837baff-dcb4-45c3-9201-7c2f9d52c365)  
 ![검색화면](https://github.com/JangMinseok1211/team5/assets/74437788/617d23d7-c90d-409a-b6a9-322aa80bb2ee)  
 ![음식추가화면](https://github.com/JangMinseok1211/team5/assets/74437788/cfb9c564-10dc-48ce-bb62-074ab878b904)  
