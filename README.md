@@ -87,6 +87,8 @@
 &nbsp;
 ![음식추가완료](https://github.com/JangMinseok1211/team5/assets/74437788/62164b56-8dd5-4b7e-b56f-ad14e8b68427)  
 &nbsp;
+![삭제](https://github.com/JangMinseok1211/team5/assets/74437788/8f5c3b30-4dfd-4fd7-8f52-fad0e701e19b)  
+
 
 
 
