@@ -79,4 +79,7 @@
 &nbsp;
 
 ### 5.사용법
+![메인](https://github.com/JangMinseok1211/team5/assets/74437788/1837baff-dcb4-45c3-9201-7c2f9d52c365)  
+
+
 
