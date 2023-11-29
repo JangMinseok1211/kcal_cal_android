@@ -80,6 +80,9 @@
 
 ### 5.사용법
 ![메인](https://github.com/JangMinseok1211/team5/assets/74437788/1837baff-dcb4-45c3-9201-7c2f9d52c365)  
+![검색화면](https://github.com/JangMinseok1211/team5/assets/74437788/617d23d7-c90d-409a-b6a9-322aa80bb2ee)  
+![음식추가화면](https://github.com/JangMinseok1211/team5/assets/74437788/cfb9c564-10dc-48ce-bb62-074ab878b904)  
+![음식추가완료](https://github.com/JangMinseok1211/team5/assets/74437788/62164b56-8dd5-4b7e-b56f-ad14e8b68427)  
 
 
 
